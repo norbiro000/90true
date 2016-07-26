@@ -1,0 +1,6 @@
+web:
+  image: 90true-node
+  ports:
+    - "80:3000"
+  environment:
+    - "affinity:container!=wp_web_*"
