@@ -3,25 +3,22 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	// res.send('EEIE');
-	// if(isLoggedIn){
-	// 	res.redirect('/test');
-	// }else{
-		res.render('index', { title: 'Express' });
-	// }
+	res.render('index', { title: '90True.com' });
 });
 
+/* main page after login */
+router.get('/main', isLoggedIn, function(req, res, next) {
+ 	res.render('main');
+});
+
+/* logout */
 router.get('/logout', isLoggedIn, function(req, res, next) {
- 	// res.render('index', { title: req.session.test });
- 	return req.logout()
-});
-
-router.get('/test', isLoggedIn, function(req, res, next) {
-	console.dir('LOGIN********** FUAAAKKK')
-	res.send('LOGIN********** FUAAAKKK')
+ 	req.logout()
+	res.redirect('/');
 });
 
 
+/* login check */
 function isLoggedIn(req, res, next) {
 
     // if user is authenticated in the session, carry on

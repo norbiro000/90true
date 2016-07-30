@@ -22,10 +22,6 @@ router.get('/', isLoggedIn, function(req, res, next) {
 
 });
 
-router.get('/test', isLoggedIn, function(req, res, next) {
-	res.send(req.session)
-});
-
 function signUpProcess(req, res, next){
 	var user_id = req.user._id;
 	User.findOne({_id: user_id}, function(err, user){

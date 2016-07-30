@@ -4,7 +4,7 @@ mongo:
   ports:
     - "27017:27017"
   volumes:
-    - "/Users/jakkapanthongkum/Desktop/mongoServer:/data/db"
+    - "/home/ubuntu/db/:/data/db"
   restart: always
 
 server1:
@@ -15,7 +15,7 @@ server1:
   links:
     - "mongo:mongo"
   volumes:
-    - "/Users/jakkapanthongkum/Documents/project/90true/90true:/usr/src/app"
+    - "/home/ubuntu/site/90true:/usr/src/app"
   environment:
     - "NODE_ENV=development"
   restart: always
@@ -26,7 +26,7 @@ server2:
   ports:
     - "3001:3000"
   volumes:
-    - ".:/usr/src/app"
+    - "/home/ubuntu/site/90true:/usr/src/app"
   links:
     - "mongo:mongo"
   environment:
@@ -39,7 +39,7 @@ server3:
   ports:
     - "3003:3000"
   volumes:
-    - ".:/usr/src/app"
+    - "/home/ubuntu/site/90true:/usr/src/app"
   links:
     - "mongo:mongo"
   environment:

@@ -44,9 +44,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.enable('trust proxy');
+
 // Passport
-
-
 // connect to our database
 mongoose.connect(config.database.connection.hostname);
 
@@ -65,8 +65,6 @@ app.use(session({
     // domain: 'http://localhost:5555'
   }
 }))
-
-
 
 app.use(passport.initialize());
 app.use(passport.session());
