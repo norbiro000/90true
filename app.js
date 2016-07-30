@@ -12,10 +12,11 @@ var passport = require('passport');
 require('./config/passport')(passport); // pass passport for configuration
 
 var routes = require('./routes/index');
+var invite = require('./routes/invite');
 var users = require('./routes/users');
+var login = require('./routes/login');
 var auth = require('./routes/auth');
 var api = require('./routes/api');
-var invite = require('./routes/invite');
 
 var app = express();
 
@@ -70,12 +71,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use('/', routes);
+app.use('/invite' , invite);
+app.use('/login' , login);
 app.use('/users', users);
 app.use('/auth' , auth);
 app.use('/api' , api);
-app.use('/invite' , api);
 
 // app.use('/api', api);
 

@@ -11,12 +11,6 @@ router.get('/', function(req, res, next) {
 	// }
 });
 
-router.get('/checkLogin', isLoggedIn, function(req, res, next) {
- 	// res.render('index', { title: req.session.test });
- 	console.dir('LOGIN**********')
- 	res.send(req.session)
-});
-
 router.get('/logout', isLoggedIn, function(req, res, next) {
  	// res.render('index', { title: req.session.test });
  	return req.logout()
