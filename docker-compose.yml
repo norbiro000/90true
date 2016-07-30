@@ -1,6 +1,49 @@
-web:
-  image: 90true-node
+mongo:
+  container_name: mongo
+  image: mongo
   ports:
-    - "80:3000"
+    - "27017:27017"
+  volumes:
+    - "/Users/jakkapanthongkum/Desktop/mongoServer:/data/db"
+  restart: always
+
+server1:
+  container_name: 90true-web-node
+  image: norbiro000/90true-node
+  ports:
+    - "3000:3000"
+  links:
+    - "mongo:mongo"
+  volumes:
+    - "/Users/jakkapanthongkum/Documents/project/90true/90true:/usr/src/app"
   environment:
-    - "affinity:container!=wp_web_*"
+    - "NODE_ENV=development"
+  restart: always
+
+server2:
+  container_name: 90true-web-node2
+  image: norbiro000/90true-node
+  ports:
+    - "3001:3000"
+  volumes:
+    - ".:/usr/src/app"
+  links:
+    - "mongo:mongo"
+  environment:
+    - "NODE_ENV=productions"
+  restart: always
+
+server3:
+  container_name: 90true-web-node3
+  image: norbiro000/90true-node
+  ports:
+    - "3003:3000"
+  volumes:
+    - ".:/usr/src/app"
+  links:
+    - "mongo:mongo"
+  environment:
+    - "NODE_ENV=productions"
+  restart: always
+
+

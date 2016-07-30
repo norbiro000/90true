@@ -3,17 +3,23 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	if(isLoggedIn){
-		res.redirect('/test');
-	}else{
+	// res.send('EEIE');
+	// if(isLoggedIn){
+	// 	res.redirect('/test');
+	// }else{
 		res.render('index', { title: 'Express' });
-	}
+	// }
 });
 
 router.get('/checkLogin', isLoggedIn, function(req, res, next) {
  	// res.render('index', { title: req.session.test });
  	console.dir('LOGIN**********')
  	res.send(req.session)
+});
+
+router.get('/logout', isLoggedIn, function(req, res, next) {
+ 	// res.render('index', { title: req.session.test });
+ 	return req.logout()
 });
 
 router.get('/test', isLoggedIn, function(req, res, next) {

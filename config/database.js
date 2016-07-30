@@ -12,14 +12,14 @@ module.exports = function(app) {
 	        database: {
 	            client: 'mongo',
 	            connection: {
-	                hostname : 'mongo/truemoney' // looks like mongodb://<user>:<pass>@mongo.onmodulus.net:27017/Mikha4ot
+	                hostname : 'mongodb://mongo:27017/truemoney2' // looks like mongodb://<user>:<pass>@mongo.onmodulus.net:27017/Mikha4ot
 	            },
 	            debug: false
 	        },
 
 	        server: {
 	            host: 'http://www.90true.com',
-	            port: '5000'
+	            port: '3000'
 	        }
 	    },
 

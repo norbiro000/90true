@@ -14,6 +14,8 @@ require('./config/passport')(passport); // pass passport for configuration
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var api = require('./routes/api');
+var invite = require('./routes/invite');
 
 var app = express();
 
@@ -54,11 +56,12 @@ app.use(session({
   secret: '93b50f1be00046b6bff43829e7455b97928759ef98706cd0172b79edb105faee',
   resave: true,
   proxy: true,
+  secure: true,
   saveUninitialized: true,
   store: store,
   cookie: { 
     maxAge: 1000 * 60 * 24,
-    domain: config.server.host
+    // domain: 'http://localhost:5555'
   }
 }))
 
@@ -71,6 +74,8 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth' , auth);
+app.use('/api' , api);
+app.use('/invite' , api);
 
 // app.use('/api', api);
 

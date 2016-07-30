@@ -1,19 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var UserCtrl = require('')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-	// res.send('EEIE');
-	// if(isLoggedIn){
-	// 	res.redirect('/test');
-	// }else{
-		res.render('index', { title: 'Express' });
-	// }
+router.get('/:id', function(req, res, next) {
+	res.render('index', { title: 'Express' });
 });
 
 
-function isLoggedIn(req, res, next) {
 
+
+function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated())
         return next();
